@@ -49,19 +49,32 @@ body{min-width:200px;max-width:850px;margin:0 auto;padding:30px;}.chapter-nav{fo
 <span class="codeblock_name">{<strong>mc.gd</strong> <a href="mc.html#1:1">1</a>}</span>
 <pre class="prettyprint lang-gd">
 extends CharacterBody2D
-<span class="nocode pln">{export_vars, <a href="mc.html#1:1">1</a>}</span>
-<span class="nocode pln">{vars, <a href="mc.html#1:1">1</a>}</span>
-<span class="nocode pln">{builtin_functions, <a href="mc.html#1:1">1</a>}</span>
+<span class="nocode pln">{export_vars, <a href="mc.html#1:2">2</a>}</span>
+<span class="nocode pln">{vars, <a href="mc.html#1:2">2</a>}</span>
+<span class="nocode pln">{builtin_functions, <a href="mc.html#1:2">2</a>}</span>
 <span class="nocode pln">{custom_functions, <a href="mc.html#1:2">2</a>}</span>
 </pre>
 
 
 
 </div>
+</div>
+<a name="1:2"><div class="section"><h4>2. movement</h4></a>
 
 <div class="codeblock">
-<span class="codeblock_name">{vars <a href="mc.html#1:1">1</a>}</span>
+<span class="codeblock_name">{vars <a href="mc.html#1:2">2</a>}</span>
 <pre class="prettyprint lang-gd">
+<span class="nocode pln">{tile_vectors, <a href="mc.html#1:2">2</a>}</span>
+</pre>
+
+
+<p class="seealso">Used in section <a href="mc.html#1:1">1</a></p>
+</div>
+
+<div class="codeblock">
+<span class="codeblock_name">{tile_vectors <a href="mc.html#1:2">2</a>}</span>
+<pre class="prettyprint lang-gd">
+var tile_size = 8 # 8 pixels scaled by 4
 </pre>
 
 
@@ -69,20 +82,40 @@ extends CharacterBody2D
 </div>
 
 <div class="codeblock">
-<span class="codeblock_name">{export_vars <a href="mc.html#1:1">1</a>}</span>
+<span class="codeblock_name">{export_vars <a href="mc.html#1:2">2</a>}</span>
 <pre class="prettyprint lang-gd">
 @export var speed = 300.0
 </pre>
 
 
-
+<p class="seealso">Used in section <a href="mc.html#1:1">1</a></p>
 </div>
 
 <div class="codeblock">
-<span class="codeblock_name">{builtin_functions <a href="mc.html#1:1">1</a>}</span>
+<span class="codeblock_name">{builtin_functions <a href="mc.html#1:2">2</a>}</span>
 <pre class="prettyprint lang-gd">
-func _physics_process(delta: float) -&gt; void:
-<span class="nocode pln">	{_physics_process, <a href="mc.html#1:1">1</a>}</span>
+func _ready():
+<span class="nocode pln">	{_ready, <a href="mc.html#1:2">2</a>}</span>
+
+func _unhandled_input(event):
+<span class="nocode pln">	{_unhandled_input, <a href="mc.html#1:2">2</a>}</span>
+	
+# func _physics_process(delta: float) -&gt; void:
+	# @{_physics_process}
+</pre>
+
+
+<p class="seealso">Used in section <a href="mc.html#1:1">1</a></p>
+</div>
+<p>credit: https://kidscancode.org/godot_recipes/4.x/2d/grid_movement/index.html
+We start at the middle.
+</p>
+
+<div class="codeblock">
+<span class="codeblock_name">{_ready <a href="mc.html#1:2">2</a>}</span>
+<pre class="prettyprint lang-gd">
+position = position.snapped(Vector2.ONE * tile_size)
+position.x += tile_size/2
 </pre>
 
 
@@ -90,32 +123,37 @@ func _physics_process(delta: float) -&gt; void:
 </div>
 
 <div class="codeblock">
-<span class="codeblock_name">{_physics_process <a href="mc.html#1:1">1</a>}</span>
+<span class="codeblock_name">{vars <a href="mc.html#1:2">2</a>} +=</span>
 <pre class="prettyprint lang-gd">
-var velocity = Vector2.ZERO # The player's movement vector.
-if Input.is_action_pressed("move_right"):
-	velocity.x += 1
-	print("moving_right!")
-if Input.is_action_pressed("move_left"):
-	velocity.x -= 1
-if Input.is_action_pressed("move_down"):
-	velocity.y += 1
-if Input.is_action_pressed("move_up"):
-	velocity.y -= 1
+var inputs = {"move_right": Vector2.RIGHT,
+            "move_left": Vector2.LEFT,
+            "move_up": Vector2.UP,
+            "move_down": Vector2.DOWN}
+</pre>
 
-position += velocity * speed * delta
-# move_and_slide()
+
+<p class="seealso">Used in section <a href="mc.html#1:1">1</a></p>
+</div>
+
+<div class="codeblock">
+<span class="codeblock_name">{_unhandled_input <a href="mc.html#1:2">2</a>}</span>
+<pre class="prettyprint lang-gd">
+for dir in inputs.keys():
+	if event.is_action_pressed(dir):
+		move(dir)
 </pre>
 
 
 
 </div>
-</div>
-<a name="1:2"><div class="section"><h4>2. debug</h4></a>
+<p>We now have to actually move the player
+</p>
 
 <div class="codeblock">
 <span class="codeblock_name">{custom_functions <a href="mc.html#1:2">2</a>}</span>
 <pre class="prettyprint lang-gd">
+func move(dir):
+	position += inputs[dir] * tile_size
 </pre>
 
 
