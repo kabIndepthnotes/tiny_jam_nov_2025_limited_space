@@ -5,18 +5,21 @@ extends CharacterBody2D
 
 # vars
 # tile_vectors
-var tile_size = 8 # 8 pixels scaled by 4
+var tile_size = 8*4 # 8 pixels scaled by 4
 
 var inputs = {"move_right": Vector2.RIGHT,
 			"move_left": Vector2.LEFT,
 			"move_up": Vector2.UP,
 			"move_down": Vector2.DOWN}
+var screen_size
 
 # builtin_functions
 func _ready():
 	# _ready
 	position = position.snapped(Vector2.ONE * tile_size)
 	position.x += tile_size/2
+	screen_size = get_viewport_rect().size
+	print(position.x)
 
 
 func _unhandled_input(event):
@@ -32,3 +35,4 @@ func _unhandled_input(event):
 # custom_functions
 func move(dir):
 	position += inputs[dir] * tile_size
+	position = position.clamp(Vector2.ZERO, screen_size)

@@ -17,7 +17,7 @@ extends CharacterBody2D
 ---
 
 --- tile_vectors
-var tile_size = 8 # 8 pixels scaled by 4
+var tile_size = 8*4 # 8 pixels scaled by 4
 ---
 
 
@@ -51,12 +51,21 @@ var inputs = {"move_right": Vector2.RIGHT,
             "move_down": Vector2.DOWN}
 ---
 
-
-
 --- _unhandled_input
 for dir in inputs.keys():
 	if event.is_action_pressed(dir):
 		move(dir)
+---
+
+
+Before we actually move the player we want to `clamp` the player to the room and not allow him to move outside it.
+
+--- vars +=
+var screen_size
+---
+
+--- _ready +=
+screen_size = get_viewport_rect().size
 ---
 
 We now have to actually move the player
@@ -64,5 +73,11 @@ We now have to actually move the player
 --- custom_functions
 func move(dir):
 	position += inputs[dir] * tile_size
+	position = position.clamp(Vector2.ZERO, screen_size)
+---
+
+@s debug
+--- _ready +=
+print(position.x)
 ---
 
