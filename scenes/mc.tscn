@@ -17,3 +17,33 @@ texture = ExtResource("1_yc5nw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_i6vl1")
+
+[node name="DirectionArrowDown" type="ColorRect" parent="."]
+offset_left = -3.0
+offset_top = 9.0
+offset_right = 2.7276917
+offset_bottom = 10.657513
+color = Color(1, 0, 0, 1)
+
+[node name="DirectionArrowUp" type="ColorRect" parent="."]
+offset_left = -3.0
+offset_top = -11.0
+offset_right = 2.7276917
+offset_bottom = -9.342487
+color = Color(1, 0, 0, 1)
+
+[node name="DirectionArrowLeft" type="ColorRect" parent="."]
+offset_left = -9.0
+offset_top = -3.0
+offset_right = -3.2723083
+offset_bottom = -1.3424873
+rotation = 1.5707964
+color = Color(1, 0, 0, 1)
+
+[node name="DirectionArrowRight" type="ColorRect" parent="."]
+offset_left = 11.0
+offset_top = -3.0
+offset_right = 16.727692
+offset_bottom = -1.3424873
+rotation = 1.5707964
+color = Color(1, 0, 0, 1)

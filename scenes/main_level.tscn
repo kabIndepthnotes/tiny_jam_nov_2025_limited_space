@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ljw7rv755i64"]
+[gd_scene load_steps=4 format=3 uid="uid://ljw7rv755i64"]
 
 [ext_resource type="Texture2D" uid="uid://d7pa2csth2ko" path="res://assets/floor.png" id="1_v3uhd"]
 [ext_resource type="PackedScene" uid="uid://cuxsd4ia7t206" path="res://scenes/mc.tscn" id="2_ufxs0"]
+[ext_resource type="PackedScene" uid="uid://csrqk3wxqphtm" path="res://scenes/interactable_cube.tscn" id="3_6we3w"]
 
 [node name="main_level" type="Node2D"]
 
@@ -14,3 +15,7 @@ texture = ExtResource("1_v3uhd")
 [node name="MC" parent="." instance=ExtResource("2_ufxs0")]
 position = Vector2(512, 384)
 scale = Vector2(4, 4)
+
+[node name="InteractableCube" parent="." instance=ExtResource("3_6we3w")]
+position = Vector2(640, 320)
+scale = Vector2(0.7894629, 0.79660857)
