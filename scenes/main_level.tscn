@@ -1,10 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://ljw7rv755i64"]
+[gd_scene load_steps=15 format=3 uid="uid://ljw7rv755i64"]
 
 [ext_resource type="Texture2D" uid="uid://d7pa2csth2ko" path="res://assets/floor.png" id="1_v3uhd"]
 [ext_resource type="PackedScene" uid="uid://cuxsd4ia7t206" path="res://scenes/mc.tscn" id="2_ufxs0"]
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://csrqk3wxqphtm" path="res://scenes/interactable_cube.tscn" id="3_6we3w"]
 [ext_resource type="PackedScene" uid="uid://dr8b8xqpjr40f" path="res://scenes/safe_1.tscn" id="4_qmak7"]
+=======
+>>>>>>> 982e683 (feat: Add various assets and update player movement bounds)
 [ext_resource type="PackedScene" uid="uid://djpkjwwuyea02" path="res://scenes/outer_wall.tscn" id="4_qmak7"]
+[ext_resource type="PackedScene" uid="uid://dwc5smcqil8gg" path="res://scenes/safe_1.tscn" id="5_8ra5a"]
+[ext_resource type="PackedScene" uid="uid://ddr6fhldpoi07" path="res://scenes/table.tscn" id="6_bq26l"]
+[ext_resource type="PackedScene" uid="uid://cp5wv3ghogle" path="res://scenes/cupboard.tscn" id="7_5fr2l"]
+[ext_resource type="PackedScene" uid="uid://djvnsrah0r2br" path="res://scenes/drawer.tscn" id="8_2sb77"]
+[ext_resource type="PackedScene" uid="uid://bedu2gjo0ahjh" path="res://scenes/mainframe.tscn" id="9_fkrx8"]
+[ext_resource type="PackedScene" uid="uid://cink2lmnoq1ys" path="res://scenes/safe_p_5.tscn" id="10_mwgft"]
+[ext_resource type="PackedScene" uid="uid://b5wt13jyi1rjp" path="res://scenes/safe_p_6.tscn" id="11_mwgft"]
+[ext_resource type="PackedScene" uid="uid://dtwdso8dhaqkd" path="res://scenes/safe_p_7.tscn" id="12_adxub"]
+[ext_resource type="PackedScene" uid="uid://cps3su45c3cbo" path="res://scenes/terminal.tscn" id="13_ff0s2"]
+[ext_resource type="PackedScene" uid="uid://dus5w1yu3krps" path="res://scenes/brain.tscn" id="13_mwgft"]
+[ext_resource type="AudioStream" uid="uid://dt0xvasbwvjd7" path="res://assets/main_theme-first-draft.wav" id="14_adxub"]
 
 
 [node name="main_level" type="Node2D"]
@@ -16,9 +30,10 @@ scale = Vector2(4, 4)
 texture = ExtResource("1_v3uhd")
 
 [node name="MC" parent="." instance=ExtResource("2_ufxs0")]
-position = Vector2(512, 384)
+position = Vector2(452, 496)
 scale = Vector2(4, 4)
 
+<<<<<<< HEAD
 [node name="InteractableCube" parent="." instance=ExtResource("3_6we3w")]
 position = Vector2(640, 320)
 scale = Vector2(0.7894629, 0.79660857)
@@ -29,4 +44,47 @@ offset_top = 287.0
 offset_right = 439.0
 offset_bottom = 318.0
 correct_answer = 12
+=======
+>>>>>>> 982e683 (feat: Add various assets and update player movement bounds)
 [node name="outer_wall" parent="." instance=ExtResource("4_qmak7")]
+
+[node name="safe1" parent="." instance=ExtResource("5_8ra5a")]
+offset_left = 960.0
+offset_top = 669.0
+offset_right = 997.0
+offset_bottom = 690.0
+
+[node name="table" parent="." instance=ExtResource("6_bq26l")]
+texture_filter = 1
+position = Vector2(969, 401)
+
+[node name="cupboard" parent="." instance=ExtResource("7_5fr2l")]
+position = Vector2(101, 96)
+
+[node name="drawer" parent="." instance=ExtResource("8_2sb77")]
+position = Vector2(667, 548)
+scale = Vector2(4, 4)
+
+[node name="mainframe" parent="." instance=ExtResource("9_fkrx8")]
+position = Vector2(449, 348)
+scale = Vector2(4, 4)
+
+[node name="safe_p5" parent="." instance=ExtResource("10_mwgft")]
+position = Vector2(692, 101)
+
+[node name="safe_p6" parent="." instance=ExtResource("11_mwgft")]
+position = Vector2(824, 101)
+
+[node name="safe_p7" parent="." instance=ExtResource("12_adxub")]
+position = Vector2(958, 101)
+
+[node name="terminal" parent="." instance=ExtResource("13_ff0s2")]
+position = Vector2(75, 580)
+
+[node name="brain" parent="." instance=ExtResource("13_mwgft")]
+position = Vector2(351, 49)
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_adxub")
+autoplay = true
+playback_type = 1

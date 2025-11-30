@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cps3su45c3cbo"]
+
+[ext_resource type="Texture2D" uid="uid://3ch6s84evl5s" path="res://assets/terminal.png" id="1_m430i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sy66w"]
+size = Vector2(36, 30)
+
+[node name="terminal" type="StaticBody2D"]
+scale = Vector2(4, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_m430i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sy66w")

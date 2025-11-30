@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dus5w1yu3krps"]
+
+[ext_resource type="Texture2D" uid="uid://d1e6llp4i2wtq" path="res://assets/brain.png" id="1_q5og4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0f1d"]
+size = Vector2(26, 20)
+
+[node name="brain" type="StaticBody2D"]
+scale = Vector2(4, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_q5og4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_k0f1d")

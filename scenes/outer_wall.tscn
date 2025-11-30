@@ -13,7 +13,7 @@ position = Vector2(522, -15)
 shape = SubResource("RectangleShape2D_0cyrc")
 
 [node name="coll_shape_bottom" type="CollisionShape2D" parent="."]
-position = Vector2(524, 815)
+position = Vector2(515, 783)
 shape = SubResource("RectangleShape2D_0cyrc")
 
 [node name="coll_shape_left" type="CollisionShape2D" parent="."]
@@ -21,5 +21,5 @@ position = Vector2(-13, 397)
 shape = SubResource("RectangleShape2D_tqki4")
 
 [node name="coll_shape_left2" type="CollisionShape2D" parent="."]
-position = Vector2(1069, 388)
+position = Vector2(1037, 384)
 shape = SubResource("RectangleShape2D_tqki4")

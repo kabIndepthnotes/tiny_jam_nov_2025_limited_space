@@ -152,7 +152,7 @@ for dir in inputs.keys():
 <div class="codeblock">
 <span class="codeblock_name">{vars <a href="mc.html#1:2">2</a>} +=</span>
 <pre class="prettyprint lang-gd">
-var screen_size
+# var movement_boundary = Vector2(256*4,192*4)
 </pre>
 <p class="seealso">Added to in section <a href="mc.html#1:3">3</a></p>
 
@@ -162,7 +162,6 @@ var screen_size
 <div class="codeblock">
 <span class="codeblock_name">{_ready <a href="mc.html#1:2">2</a>} +=</span>
 <pre class="prettyprint lang-gd">
-screen_size = get_viewport_rect().size
 </pre>
 <p class="seealso">Added to in sections <a href="mc.html#1:3">3</a> and <a href="mc.html#1:4">4</a></p>
 
@@ -186,7 +185,7 @@ screen_size = get_viewport_rect().size
 <pre class="prettyprint lang-gd">
 func move(dir):
 	position += inputs[dir] * tile_size
-	position = position.clamp(Vector2.ZERO, screen_size)
+	# position = position.clamp(Vector2.ZERO, movement_boundary)
 </pre>
 
 <p class="seealso">Redefined in section <a href="mc.html#1:3">3</a></p>
@@ -223,7 +222,7 @@ func move(dir):
 	var collision = move_and_collide(movement, true)
 	if collision == null:
 		position += movement
-		position = position.clamp(Vector2.ZERO, screen_size)
+		# position = position.clamp(Vector2.ZERO, movement_boundary)
 		# Update facing direction when movement succeeds
 		facing_direction = inputs[dir]
 		update_direction_arrow()

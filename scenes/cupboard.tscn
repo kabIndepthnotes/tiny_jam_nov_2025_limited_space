@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp5wv3ghogle"]
+
+[ext_resource type="Texture2D" uid="uid://dgdctitso2w0w" path="res://assets/cupboard.png" id="1_tfk35"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aadns"]
+size = Vector2(50, 49)
+
+[node name="cupboard" type="StaticBody2D"]
+scale = Vector2(4, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_tfk35")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_aadns")

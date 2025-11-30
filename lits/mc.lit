@@ -61,11 +61,10 @@ for dir in inputs.keys():
 Before we actually move the player we want to `clamp` the player to the room and not allow him to move outside it.
 
 --- vars +=
-var screen_size
+# var movement_boundary = Vector2(256*4,192*4)
 ---
 
 --- _ready +=
-screen_size = get_viewport_rect().size
 ---
 
 We now have to actually move the player
@@ -77,7 +76,7 @@ We now have to actually move the player
 --- f_move
 func move(dir):
 	position += inputs[dir] * tile_size
-	position = position.clamp(Vector2.ZERO, screen_size)
+	# position = position.clamp(Vector2.ZERO, movement_boundary)
 ---
 
 
@@ -96,7 +95,7 @@ func move(dir):
 	var collision = move_and_collide(movement, true)
 	if collision == null:
 		position += movement
-		position = position.clamp(Vector2.ZERO, screen_size)
+		# position = position.clamp(Vector2.ZERO, movement_boundary)
 		# Update facing direction when movement succeeds
 		facing_direction = inputs[dir]
 		update_direction_arrow()

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddr6fhldpoi07"]
+
+[ext_resource type="Texture2D" uid="uid://dx41u484rw5bh" path="res://assets/electric_table.png" id="1_02ppr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eotx8"]
+size = Vector2(28, 70)
+
+[node name="table" type="StaticBody2D"]
+scale = Vector2(4, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_02ppr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_eotx8")
