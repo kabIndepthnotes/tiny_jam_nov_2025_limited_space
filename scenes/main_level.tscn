@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://cuxsd4ia7t206" path="res://scenes/mc.tscn" id="2_ufxs0"]
 [ext_resource type="PackedScene" uid="uid://csrqk3wxqphtm" path="res://scenes/interactable_cube.tscn" id="3_6we3w"]
 [ext_resource type="PackedScene" uid="uid://dr8b8xqpjr40f" path="res://scenes/safe_1.tscn" id="4_qmak7"]
+[ext_resource type="PackedScene" uid="uid://djpkjwwuyea02" path="res://scenes/outer_wall.tscn" id="4_qmak7"]
+
 
 [node name="main_level" type="Node2D"]
 
@@ -27,3 +29,4 @@ offset_top = 287.0
 offset_right = 439.0
 offset_bottom = 318.0
 correct_answer = 12
+[node name="outer_wall" parent="." instance=ExtResource("4_qmak7")]
