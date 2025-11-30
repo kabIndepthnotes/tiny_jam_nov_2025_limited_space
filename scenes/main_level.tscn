@@ -1,12 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://ljw7rv755i64"]
+[gd_scene load_steps=16 format=3 uid="uid://ljw7rv755i64"]
 
 [ext_resource type="Texture2D" uid="uid://d7pa2csth2ko" path="res://assets/floor.png" id="1_v3uhd"]
+[ext_resource type="PackedScene" uid="uid://dbf2ltgbhv8fx" path="res://scenes/axe.tscn" id="2_adxub"]
 [ext_resource type="PackedScene" uid="uid://cuxsd4ia7t206" path="res://scenes/mc.tscn" id="2_ufxs0"]
-<<<<<<< HEAD
-[ext_resource type="PackedScene" uid="uid://csrqk3wxqphtm" path="res://scenes/interactable_cube.tscn" id="3_6we3w"]
-[ext_resource type="PackedScene" uid="uid://dr8b8xqpjr40f" path="res://scenes/safe_1.tscn" id="4_qmak7"]
-=======
->>>>>>> 982e683 (feat: Add various assets and update player movement bounds)
 [ext_resource type="PackedScene" uid="uid://djpkjwwuyea02" path="res://scenes/outer_wall.tscn" id="4_qmak7"]
 [ext_resource type="PackedScene" uid="uid://dwc5smcqil8gg" path="res://scenes/safe_1.tscn" id="5_8ra5a"]
 [ext_resource type="PackedScene" uid="uid://ddr6fhldpoi07" path="res://scenes/table.tscn" id="6_bq26l"]
@@ -20,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://dus5w1yu3krps" path="res://scenes/brain.tscn" id="13_mwgft"]
 [ext_resource type="AudioStream" uid="uid://dt0xvasbwvjd7" path="res://assets/main_theme-first-draft.wav" id="14_adxub"]
 
-
 [node name="main_level" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -29,23 +24,13 @@ position = Vector2(512, 384)
 scale = Vector2(4, 4)
 texture = ExtResource("1_v3uhd")
 
+[node name="axe" parent="." instance=ExtResource("2_adxub")]
+position = Vector2(282, 723)
+
 [node name="MC" parent="." instance=ExtResource("2_ufxs0")]
 position = Vector2(452, 496)
 scale = Vector2(4, 4)
 
-<<<<<<< HEAD
-[node name="InteractableCube" parent="." instance=ExtResource("3_6we3w")]
-position = Vector2(640, 320)
-scale = Vector2(0.7894629, 0.79660857)
-
-[node name="safe1" parent="." instance=ExtResource("4_qmak7")]
-offset_left = 388.0
-offset_top = 287.0
-offset_right = 439.0
-offset_bottom = 318.0
-correct_answer = 12
-=======
->>>>>>> 982e683 (feat: Add various assets and update player movement bounds)
 [node name="outer_wall" parent="." instance=ExtResource("4_qmak7")]
 
 [node name="safe1" parent="." instance=ExtResource("5_8ra5a")]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbf2ltgbhv8fx"]
+
+[ext_resource type="Texture2D" uid="uid://c78ng2sx8822v" path="res://assets/axe.png" id="1_odgf8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_odgf8"]
+size = Vector2(35.25, 23.625)
+
+[node name="axe" type="StaticBody2D"]
+scale = Vector2(4, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_odgf8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.25, 0)
+shape = SubResource("RectangleShape2D_odgf8")

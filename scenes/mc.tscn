@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuxsd4ia7t206"]
+[gd_scene load_steps=5 format=3 uid="uid://cuxsd4ia7t206"]
 
 [ext_resource type="Script" uid="uid://c228s1a4f6v5j" path="res://scripts/mc.gd" id="1_i6vl1"]
 [ext_resource type="Texture2D" uid="uid://mht8yyb20kvj" path="res://assets/mc.png" id="1_yc5nw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6vl1"]
 size = Vector2(15, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6s5m"]
+size = Vector2(8, 8)
 
 [node name="MC" type="CharacterBody2D"]
 script = ExtResource("1_i6vl1")
@@ -18,34 +21,17 @@ texture = ExtResource("1_yc5nw")
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_i6vl1")
 
-[node name="DirectionArrowDown" type="ColorRect" parent="."]
-offset_left = -3.0
-offset_top = 9.0
-offset_right = 2.7276917
-offset_bottom = 10.657513
-color = Color(1, 0, 0, 1)
-
-[node name="DirectionArrowUp" type="ColorRect" parent="."]
-offset_left = -3.0
-offset_top = -11.0
-offset_right = 2.7276917
-offset_bottom = -9.342487
-color = Color(1, 0, 0, 1)
-
-[node name="DirectionArrowLeft" type="ColorRect" parent="."]
-offset_left = -9.0
-offset_top = -3.0
-offset_right = -3.2723083
-offset_bottom = -1.3424873
-rotation = 1.5707964
-color = Color(1, 0, 0, 1)
-
-[node name="DirectionArrowRight" type="ColorRect" parent="."]
-offset_left = 11.0
-offset_top = -3.0
-offset_right = 16.727692
-offset_bottom = -1.3424873
-rotation = 1.5707964
-color = Color(1, 0, 0, 1)
-
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="DirectionArrowDown" type="ColorRect" parent="Area2D"]
+offset_left = -4.0
+offset_top = 5.0
+offset_right = 4.0
+offset_bottom = 13.0
+color = Color(1, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_a6s5m")

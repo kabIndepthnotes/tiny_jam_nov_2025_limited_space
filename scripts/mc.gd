@@ -4,14 +4,13 @@ extends CharacterBody2D
 @export var speed = 300.0
 
 # vars
-# tile_vectors
 var tile_size = 8 * 4 # 8 pixels scaled by 4
-
-var inputs = {"move_right": Vector2.RIGHT,
-            "move_left": Vector2.LEFT,
-            "move_up": Vector2.UP,
-            "move_down": Vector2.DOWN}
-# var movement_boundary = Vector2(256*4,192*4)
+var player_size = Vector2(14 * 4, 20 * 4)
+var inputs = {"move_right": [Vector2.RIGHT, Vector2(player_size.x / 2, player_size.y / 2)],
+			"move_left": [Vector2.LEFT, Vector2(-player_size.x / 2, player_size.y / 2)],
+			"move_up": [Vector2.UP, Vector2(player_size.x / 2, 0)],
+			"move_down": [Vector2.DOWN, Vector2(player_size.x / 2 , player_size.y)],
+}
 var facing_direction = Vector2.DOWN # Track current facing direction
 
 # builtin_functions
@@ -19,7 +18,6 @@ func _ready():
 	# _ready
 	position = position.snapped(Vector2.ONE * tile_size)
 	position.x += tile_size / 2
-	update_direction_arrow() # Initialize arrow direction
 	print(position.x)
 
 
@@ -36,34 +34,8 @@ func _unhandled_input(event):
 # custom_functions
 # f_move
 func move(dir):
-	var movement = inputs[dir] * tile_size
+	var movement = inputs[dir][0] * tile_size
+	$Area2D.position = inputs[dir][1]
 	var collision = move_and_collide(movement, true)
 	if collision == null:
 		position += movement
-		# position = position.clamp(Vector2.ZERO, movement_boundary)
-		# Update facing direction when movement succeeds
-		facing_direction = inputs[dir]
-		update_direction_arrow()
-
-func update_direction_arrow():
-	# Shows the correct directional arrow and hides the others
-	# Hide all arrows first
-	if has_node("DirectionArrowUp"):
-		get_node("DirectionArrowUp").visible = false
-	if has_node("DirectionArrowDown"):
-		get_node("DirectionArrowDown").visible = false
-	if has_node("DirectionArrowLeft"):
-		get_node("DirectionArrowLeft").visible = false
-	if has_node("DirectionArrowRight"):
-		get_node("DirectionArrowRight").visible = false
-	# Show only the correct arrow based on facing direction
-	if facing_direction == Vector2.UP and has_node("DirectionArrowUp"):
-		get_node("DirectionArrowUp").visible = true
-	elif facing_direction == Vector2.DOWN and has_node("DirectionArrowDown"):
-		get_node("DirectionArrowDown").visible = true
-	elif facing_direction == Vector2.LEFT and has_node("DirectionArrowLeft"):
-		get_node("DirectionArrowLeft").visible = true
-	elif facing_direction == Vector2.RIGHT and has_node("DirectionArrowRight"):
-		get_node("DirectionArrowRight").visible = true
-
-

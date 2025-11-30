@@ -1,0 +1,131 @@
+@code_type gdscript .gd
+@comment_type # %s
+
+@s mc.gd
+
+--- mc.gd
+extends CharacterBody2D
+@{export_vars}
+@{vars}
+@{builtin_functions}
+@{custom_functions}
+---
+
+@s movement
+--- vars
+@{tile_vectors}
+---
+
+--- tile_vectors
+var tile_size = 8 * 4 # 8 pixels scaled by 4
+---
+
+
+--- export_vars
+@export var speed = 300.0
+---
+
+
+--- builtin_functions
+func _ready():
+	@{_ready}
+
+func _unhandled_input(event):
+	@{_unhandled_input}
+	
+# func _physics_process(delta: float) -> void:
+	# @{_physics_process}
+---
+
+credit: https://kidscancode.org/godot_recipes/4.x/2d/grid_movement/index.html
+We start at the middle.
+--- _ready
+position = position.snapped(Vector2.ONE * tile_size)
+position.x += tile_size / 2
+---
+
+--- vars +=
+var inputs = {"move_right": Vector2.RIGHT,
+            "move_left": Vector2.LEFT,
+            "move_up": Vector2.UP,
+            "move_down": Vector2.DOWN}
+---
+
+--- _unhandled_input
+for dir in inputs.keys():
+	if event.is_action_pressed(dir):
+		move(dir)
+---
+
+
+Before we actually move the player we want to `clamp` the player to the room and not allow him to move outside it.
+
+--- vars +=
+---
+
+--- _ready +=
+---
+
+We now have to actually move the player
+
+--- custom_functions
+@{f_move}
+---
+
+--- f_move
+func move(dir):
+	position += inputs[dir] * tile_size
+---
+
+
+@s facing direction for interaction
+--- vars +=
+var facing_direction = Vector2.DOWN # Track current facing direction
+---
+
+--- _ready +=
+update_direction_arrow() # Initialize arrow direction
+---
+
+--- f_move :=
+func move(dir):
+	var movement = inputs[dir] * tile_size
+	var collision = move_and_collide(movement, true)
+	if collision == null:
+		position += movement
+		# Update facing direction when movement succeeds
+		facing_direction = inputs[dir]
+		update_direction_arrow()
+---
+
+
+--- custom_functions +=
+func update_direction_arrow():
+	# Shows the correct directional arrow and hides the others
+	# Hide all arrows first
+	if has_node("DirectionArrowUp"):
+		get_node("DirectionArrowUp").visible = false
+	if has_node("DirectionArrowDown"):
+		get_node("DirectionArrowDown").visible = false
+	if has_node("DirectionArrowLeft"):
+		get_node("DirectionArrowLeft").visible = false
+	if has_node("DirectionArrowRight"):
+		get_node("DirectionArrowRight").visible = false
+	# Show only the correct arrow based on facing direction
+	if facing_direction == Vector2.UP and has_node("DirectionArrowUp"):
+		get_node("DirectionArrowUp").visible = true
+	elif facing_direction == Vector2.DOWN and has_node("DirectionArrowDown"):
+		get_node("DirectionArrowDown").visible = true
+	elif facing_direction == Vector2.LEFT and has_node("DirectionArrowLeft"):
+		get_node("DirectionArrowLeft").visible = true
+	elif facing_direction == Vector2.RIGHT and has_node("DirectionArrowRight"):
+		get_node("DirectionArrowRight").visible = true
+---
+
+
+
+@s debug
+--- _ready +=
+print(position.x)
+---
+
