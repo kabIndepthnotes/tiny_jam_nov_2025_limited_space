@@ -47,3 +47,5 @@ offset_right = 16.727692
 offset_bottom = -1.3424873
 rotation = 1.5707964
 color = Color(1, 0, 0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
