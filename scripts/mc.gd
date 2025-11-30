@@ -8,9 +8,9 @@ extends CharacterBody2D
 var tile_size = 8 * 4 # 8 pixels scaled by 4
 
 var inputs = {"move_right": Vector2.RIGHT,
-            "move_left": Vector2.LEFT,
-            "move_up": Vector2.UP,
-            "move_down": Vector2.DOWN}
+			"move_left": Vector2.LEFT,
+			"move_up": Vector2.UP,
+			"move_down": Vector2.DOWN}
 var screen_size
 var facing_direction = Vector2.DOWN # Track current facing direction
 
@@ -66,5 +66,3 @@ func update_direction_arrow():
 		get_node("DirectionArrowLeft").visible = true
 	elif facing_direction == Vector2.RIGHT and has_node("DirectionArrowRight"):
 		get_node("DirectionArrowRight").visible = true
-
-

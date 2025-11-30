@@ -1,7 +1,8 @@
 extends Node
 
 var items: Dictionary = {
-	"phone": false
+	"phone": false,
+	"computer_password": false
 }
 
 func has_item(item_name: String) -> bool:
