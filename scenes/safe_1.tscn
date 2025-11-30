@@ -23,39 +23,12 @@ offset_bottom = 771.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Panel"]
 layout_mode = 0
-offset_left = 126.0
+offset_left = 138.0
 offset_top = 232.0
-offset_right = 194.0
+offset_right = 566.0
 offset_bottom = 378.0
 theme_override_font_sizes/font_size = 100
-text = "2,"
-
-[node name="Label2" type="Label" parent="CanvasLayer/Panel"]
-layout_mode = 0
-offset_left = 246.0
-offset_top = 232.0
-offset_right = 314.0
-offset_bottom = 378.0
-theme_override_font_sizes/font_size = 100
-text = "3,"
-
-[node name="Label3" type="Label" parent="CanvasLayer/Panel"]
-layout_mode = 0
-offset_left = 363.0
-offset_top = 232.0
-offset_right = 431.0
-offset_bottom = 378.0
-theme_override_font_sizes/font_size = 100
-text = "5,"
-
-[node name="Label4" type="Label" parent="CanvasLayer/Panel"]
-layout_mode = 0
-offset_left = 476.0
-offset_top = 232.0
-offset_right = 544.0
-offset_bottom = 378.0
-theme_override_font_sizes/font_size = 100
-text = "7,"
+text = "2, 3, 5, 7,"
 
 [node name="answer" type="Label" parent="CanvasLayer/Panel"]
 layout_mode = 0

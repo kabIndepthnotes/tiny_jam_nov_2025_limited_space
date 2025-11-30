@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ljw7rv755i64"]
+[gd_scene load_steps=5 format=3 uid="uid://ljw7rv755i64"]
 
 [ext_resource type="Texture2D" uid="uid://d7pa2csth2ko" path="res://assets/floor.png" id="1_v3uhd"]
 [ext_resource type="PackedScene" uid="uid://cuxsd4ia7t206" path="res://scenes/mc.tscn" id="2_ufxs0"]
 [ext_resource type="PackedScene" uid="uid://csrqk3wxqphtm" path="res://scenes/interactable_cube.tscn" id="3_6we3w"]
+[ext_resource type="PackedScene" uid="uid://dr8b8xqpjr40f" path="res://scenes/safe_1.tscn" id="4_qmak7"]
 
 [node name="main_level" type="Node2D"]
 
@@ -19,3 +20,10 @@ scale = Vector2(4, 4)
 [node name="InteractableCube" parent="." instance=ExtResource("3_6we3w")]
 position = Vector2(640, 320)
 scale = Vector2(0.7894629, 0.79660857)
+
+[node name="safe1" parent="." instance=ExtResource("4_qmak7")]
+offset_left = 388.0
+offset_top = 287.0
+offset_right = 439.0
+offset_bottom = 318.0
+correct_answer = 12
