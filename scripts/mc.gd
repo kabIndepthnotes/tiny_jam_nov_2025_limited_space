@@ -8,9 +8,9 @@ extends CharacterBody2D
 var tile_size = 8 * 4 # 8 pixels scaled by 4
 
 var inputs = {"move_right": Vector2.RIGHT,
-			"move_left": Vector2.LEFT,
-			"move_up": Vector2.UP,
-			"move_down": Vector2.DOWN}
+            "move_left": Vector2.LEFT,
+            "move_up": Vector2.UP,
+            "move_down": Vector2.DOWN}
 var screen_size
 var facing_direction = Vector2.DOWN # Track current facing direction
 
@@ -20,8 +20,8 @@ func _ready():
 	position = position.snapped(Vector2.ONE * tile_size)
 	position.x += tile_size / 2
 	screen_size = get_viewport_rect().size
-	print(position.x)
 	update_direction_arrow() # Initialize arrow direction
+	print(position.x)
 
 
 func _unhandled_input(event):
@@ -35,8 +35,8 @@ func _unhandled_input(event):
 	# @{_physics_process}
 
 # custom_functions
+# f_move
 func move(dir):
-	# move
 	var movement = inputs[dir] * tile_size
 	var collision = move_and_collide(movement, true)
 	if collision == null:
@@ -45,7 +45,6 @@ func move(dir):
 		# Update facing direction when movement succeeds
 		facing_direction = inputs[dir]
 		update_direction_arrow()
-
 
 func update_direction_arrow():
 	# Shows the correct directional arrow and hides the others
@@ -58,7 +57,6 @@ func update_direction_arrow():
 		get_node("DirectionArrowLeft").visible = false
 	if has_node("DirectionArrowRight"):
 		get_node("DirectionArrowRight").visible = false
-	
 	# Show only the correct arrow based on facing direction
 	if facing_direction == Vector2.UP and has_node("DirectionArrowUp"):
 		get_node("DirectionArrowUp").visible = true
@@ -68,3 +66,5 @@ func update_direction_arrow():
 		get_node("DirectionArrowLeft").visible = true
 	elif facing_direction == Vector2.RIGHT and has_node("DirectionArrowRight"):
 		get_node("DirectionArrowRight").visible = true
+
+
