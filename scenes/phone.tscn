@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bibv2yxm5d57k"]
+
+[ext_resource type="Script" uid="uid://6skpajclau3q" path="res://scripts/phone.gd" id="1_08mii"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ewalk"]
+
+[node name="phone" type="Area2D"]
+script = ExtResource("1_08mii")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ewalk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="clicked" from="." to="." method="_on_clicked"]
