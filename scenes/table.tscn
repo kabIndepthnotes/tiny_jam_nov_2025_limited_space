@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddr6fhldpoi07"]
+[gd_scene load_steps=4 format=3 uid="uid://ddr6fhldpoi07"]
 
 [ext_resource type="Texture2D" uid="uid://dx41u484rw5bh" path="res://assets/electric_table.png" id="1_02ppr"]
+[ext_resource type="PackedScene" uid="uid://b77nu0egxwmjq" path="res://scenes/interact_area.tscn" id="2_eotx8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eotx8"]
 size = Vector2(23.75, 64)
@@ -15,3 +16,7 @@ texture = ExtResource("1_02ppr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.125, 0)
 shape = SubResource("RectangleShape2D_eotx8")
+
+[node name="interact_area" parent="." instance=ExtResource("2_eotx8")]
+scale = Vector2(2, 4)
+interact_label = "Looks like wiring, and a anti-static mat?"

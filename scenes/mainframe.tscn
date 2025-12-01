@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bedu2gjo0ahjh"]
+[gd_scene load_steps=4 format=3 uid="uid://bedu2gjo0ahjh"]
 
 [ext_resource type="Texture2D" uid="uid://c7dprpovq8gj1" path="res://assets/mainframe.png" id="1_556ts"]
+[ext_resource type="PackedScene" uid="uid://b77nu0egxwmjq" path="res://scenes/interact_area.tscn" id="2_04lyl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04lyl"]
-size = Vector2(64, 40)
+size = Vector2(60, 40)
 
 [node name="mainframe" type="StaticBody2D"]
 
@@ -13,3 +14,8 @@ texture = ExtResource("1_556ts")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_04lyl")
+
+[node name="interact_area" parent="." instance=ExtResource("2_04lyl")]
+position = Vector2(1, 0)
+scale = Vector2(3.7, 2.5)
+interact_label = "I don't trust the look of this computer"

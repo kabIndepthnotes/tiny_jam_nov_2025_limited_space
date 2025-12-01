@@ -328,6 +328,7 @@ func execute_interactions():
 		match cur_interaction.interact_type:
 			"print_text": print(cur_interaction.interact_value)
 			"open_drawer": obtain_cell_battery()
+			"open_puzzle_2": run_puzzle_2()
 </pre>
 <p class="seealso">Added to in section <a href="mc.html#1:3">3</a></p>
 
@@ -361,8 +362,21 @@ if event.is_action_pressed("interact"):
 <span class="codeblock_name">{custom_functions <a href="mc.html#1:2">2</a>} +=</span>
 <pre class="prettyprint lang-gd">
 func obtain_cell_battery():
-	has_cell_battery = true
-	print("cell battery obtained")
+	if not has_cell_battery:
+		has_cell_battery = true
+		interactLabel.text = "A Cell battery!"
+		# print("cell battery obtained")
+</pre>
+<p class="seealso">Added to in section <a href="mc.html#1:3">3</a></p>
+
+<p class="seealso">Used in section <a href="mc.html#1:1">1</a></p>
+</div>
+
+<div class="codeblock">
+<span class="codeblock_name">{custom_functions <a href="mc.html#1:2">2</a>} +=</span>
+<pre class="prettyprint lang-gd">
+func run_puzzle_2():
+	get_tree().change_scene_to_file("res://scenes/safe_1.tscn")
 </pre>
 <p class="seealso">Added to in section <a href="mc.html#1:3">3</a></p>
 

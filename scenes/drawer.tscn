@@ -17,4 +17,5 @@ shape = SubResource("RectangleShape2D_k0f1d")
 
 [node name="interact_area" parent="." instance=ExtResource("2_k0f1d")]
 scale = Vector2(2, 2)
+interact_label = "is something inside?"
 interact_type = "open_drawer"

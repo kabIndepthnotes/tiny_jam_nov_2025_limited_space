@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://4efr0uljgod5"]
+
+[ext_resource type="Texture2D" uid="uid://b68hhepva0smq" path="res://assets/lose.png" id="1_10rtl"]
+[ext_resource type="AudioStream" uid="uid://yyree87rrs57" path="res://assets/game-over-first-draft.wav" id="1_vjdtf"]
+[ext_resource type="FontFile" uid="uid://bd3dfbg8xttqw" path="res://third_party/static/PixelifySans-Bold.ttf" id="2_r6nsb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_10rtl"]
+font = ExtResource("2_r6nsb")
+font_size = 30
+font_color = Color(0.8, 0.18400002, 0.24559994, 1)
+outline_size = 15
+outline_color = Color(0.029441899, 0.018994937, 0.016770208, 1)
+
+[node name="lose" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(516.99994, 385)
+scale = Vector2(3.9999995, 4.020833)
+texture = ExtResource("1_10rtl")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_vjdtf")
+autoplay = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 444.0
+offset_top = 256.0
+offset_right = 608.0
+offset_bottom = 293.0
+text = "GAME OVER!"
+label_settings = SubResource("LabelSettings_10rtl")

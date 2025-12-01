@@ -70,6 +70,11 @@ func execute_interactions():
 		match cur_interaction.interact_type:
 			"print_text": print(cur_interaction.interact_value)
 			"open_drawer": obtain_cell_battery()
+			"open_puzzle_2": run_puzzle_2()
 func obtain_cell_battery():
-	has_cell_battery = true
-	print("cell battery obtained")
+	if not has_cell_battery:
+		has_cell_battery = true
+		interactLabel.text = "A Cell battery!"
+		# print("cell battery obtained")
+func run_puzzle_2():
+	get_tree().change_scene_to_file("res://scenes/safe_1.tscn")

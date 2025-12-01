@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://du8c1dlr7ekrb"]
+
+[ext_resource type="AudioStream" uid="uid://lc5wc8slo68p" path="res://assets/victory-first-draft.wav" id="1_r4oei"]
+[ext_resource type="FontFile" uid="uid://dyhmvlcoja2eo" path="res://third_party/static/PixelifySans-Regular.ttf" id="2_826fv"]
+[ext_resource type="Texture2D" uid="uid://lxuce820rpif" path="res://assets/win.png" id="2_iiocm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iiocm"]
+font = ExtResource("2_826fv")
+font_size = 33
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[node name="win" type="Node2D"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_r4oei")
+autoplay = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(508.25006, 384.75003)
+scale = Vector2(3.9902346, 4.0234375)
+texture = ExtResource("2_iiocm")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 416.0
+offset_top = 280.0
+offset_right = 545.0
+offset_bottom = 321.0
+text = "YOU WIN!"
+label_settings = SubResource("LabelSettings_iiocm")
+metadata/_edit_use_anchors_ = true

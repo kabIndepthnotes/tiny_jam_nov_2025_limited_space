@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ljw7rv755i64"]
+[gd_scene load_steps=17 format=3 uid="uid://ljw7rv755i64"]
 
 [ext_resource type="Script" uid="uid://2q3ksvprnty5" path="res://scripts/main_level.gd" id="1_ondrs"]
 [ext_resource type="Texture2D" uid="uid://d7pa2csth2ko" path="res://assets/floor.png" id="1_v3uhd"]
@@ -15,11 +15,17 @@
 [ext_resource type="PackedScene" uid="uid://cps3su45c3cbo" path="res://scenes/terminal.tscn" id="13_ff0s2"]
 [ext_resource type="PackedScene" uid="uid://dus5w1yu3krps" path="res://scenes/brain.tscn" id="13_mwgft"]
 [ext_resource type="AudioStream" uid="uid://dt0xvasbwvjd7" path="res://assets/main_theme-first-draft.wav" id="14_adxub"]
-[ext_resource type="PackedScene" uid="uid://b77nu0egxwmjq" path="res://scenes/interact_area.tscn" id="16_uk2yf"]
 [ext_resource type="PackedScene" uid="uid://c1ll7w7aeihxj" path="res://scenes/safe_p_2.tscn" id="17_ondrs"]
 
 [node name="main_level" type="Node2D"]
 script = ExtResource("1_ondrs")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -2062.0
+offset_top = -1555.0
+offset_right = 3541.0
+offset_bottom = 2919.0
+color = Color(0.06469653, 0.06469653, 0.06469653, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -58,7 +64,7 @@ position = Vector2(704, 97)
 position = Vector2(832, 97)
 
 [node name="safe_p7" parent="." instance=ExtResource("12_adxub")]
-position = Vector2(960, 97)
+position = Vector2(962, 99)
 
 [node name="terminal" parent="." instance=ExtResource("13_ff0s2")]
 position = Vector2(81, 578)
@@ -70,12 +76,6 @@ position = Vector2(339, 48)
 stream = ExtResource("14_adxub")
 autoplay = true
 playback_type = 1
-
-[node name="interact_area" parent="." instance=ExtResource("16_uk2yf")]
-position = Vector2(276, 514)
-interact_label = "Interaction Test"
-interact_type = "print_text"
-interact_value = "Works"
 
 [node name="safe_p2" parent="." instance=ExtResource("17_ondrs")]
 position = Vector2(962, 673)

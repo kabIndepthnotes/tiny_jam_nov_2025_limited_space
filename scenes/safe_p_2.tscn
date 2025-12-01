@@ -19,7 +19,7 @@ shape = SubResource("RectangleShape2D_54k8v")
 
 [node name="interact_area" parent="." instance=ExtResource("2_54k8v")]
 position = Vector2(0.75, 2.0000002)
-scale = Vector2(3, 3)
-interact_label = "SafeP2"
-interact_type = "print_text"
-interact_value = "SafeP2 print text"
+scale = Vector2(2.2, 3)
+interact_label = "!!"
+interact_type = "open_puzzle_2"
+interact_value = ""
