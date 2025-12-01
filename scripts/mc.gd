@@ -2,6 +2,7 @@
 extends CharacterBody2D
 # export_vars
 @export var speed = 300.0
+@export var has_cell_battery = false
 
 # onready_vars
 @onready var all_interactions = []
@@ -68,3 +69,7 @@ func execute_interactions():
 		var cur_interaction = all_interactions[0]
 		match cur_interaction.interact_type:
 			"print_text": print(cur_interaction.interact_value)
+			"open_drawer": obtain_cell_battery()
+func obtain_cell_battery():
+	has_cell_battery = true
+	print("cell battery obtained")

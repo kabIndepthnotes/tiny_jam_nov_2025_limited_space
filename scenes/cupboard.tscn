@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dgdctitso2w0w" path="res://assets/cupboard.png" id="1_tfk35"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aadns"]
-size = Vector2(50, 49)
+size = Vector2(56.25, 48)
 
 [node name="cupboard" type="StaticBody2D"]
 scale = Vector2(4, 4)
@@ -13,5 +13,5 @@ texture_filter = 1
 texture = ExtResource("1_tfk35")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(-0.125, 0.25)
 shape = SubResource("RectangleShape2D_aadns")

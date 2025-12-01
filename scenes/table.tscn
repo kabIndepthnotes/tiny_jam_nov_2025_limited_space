@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dx41u484rw5bh" path="res://assets/electric_table.png" id="1_02ppr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eotx8"]
-size = Vector2(28, 70)
+size = Vector2(23.75, 64)
 
 [node name="table" type="StaticBody2D"]
 scale = Vector2(4, 4)
@@ -13,4 +13,5 @@ texture_filter = 1
 texture = ExtResource("1_02ppr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.125, 0)
 shape = SubResource("RectangleShape2D_eotx8")

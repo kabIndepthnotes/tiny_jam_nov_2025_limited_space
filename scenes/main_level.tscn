@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://dbf2ltgbhv8fx" path="res://scenes/axe.tscn" id="2_adxub"]
 [ext_resource type="PackedScene" uid="uid://cuxsd4ia7t206" path="res://scenes/mc.tscn" id="2_ufxs0"]
 [ext_resource type="PackedScene" uid="uid://djpkjwwuyea02" path="res://scenes/outer_wall.tscn" id="4_qmak7"]
-[ext_resource type="PackedScene" uid="uid://dwc5smcqil8gg" path="res://scenes/safe_1.tscn" id="5_8ra5a"]
 [ext_resource type="PackedScene" uid="uid://ddr6fhldpoi07" path="res://scenes/table.tscn" id="6_bq26l"]
 [ext_resource type="PackedScene" uid="uid://cp5wv3ghogle" path="res://scenes/cupboard.tscn" id="7_5fr2l"]
 [ext_resource type="PackedScene" uid="uid://djvnsrah0r2br" path="res://scenes/drawer.tscn" id="8_2sb77"]
@@ -17,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dus5w1yu3krps" path="res://scenes/brain.tscn" id="13_mwgft"]
 [ext_resource type="AudioStream" uid="uid://dt0xvasbwvjd7" path="res://assets/main_theme-first-draft.wav" id="14_adxub"]
 [ext_resource type="PackedScene" uid="uid://b77nu0egxwmjq" path="res://scenes/interact_area.tscn" id="16_uk2yf"]
+[ext_resource type="PackedScene" uid="uid://c1ll7w7aeihxj" path="res://scenes/safe_p_2.tscn" id="17_ondrs"]
 
 [node name="main_level" type="Node2D"]
 script = ExtResource("1_ondrs")
@@ -28,7 +28,7 @@ scale = Vector2(4, 4)
 texture = ExtResource("1_v3uhd")
 
 [node name="axe" parent="." instance=ExtResource("2_adxub")]
-position = Vector2(282, 723)
+position = Vector2(289, 706)
 
 [node name="MC" parent="." instance=ExtResource("2_ufxs0")]
 position = Vector2(452, 496)
@@ -36,42 +36,35 @@ scale = Vector2(4, 4)
 
 [node name="outer_wall" parent="." instance=ExtResource("4_qmak7")]
 
-[node name="safe1" parent="." instance=ExtResource("5_8ra5a")]
-offset_left = 960.0
-offset_top = 669.0
-offset_right = 997.0
-offset_bottom = 690.0
-metadata/_edit_use_anchors_ = true
-
 [node name="table" parent="." instance=ExtResource("6_bq26l")]
 texture_filter = 1
-position = Vector2(969, 401)
+position = Vector2(980, 386)
 
 [node name="cupboard" parent="." instance=ExtResource("7_5fr2l")]
-position = Vector2(101, 96)
+position = Vector2(112, 97)
 
 [node name="drawer" parent="." instance=ExtResource("8_2sb77")]
-position = Vector2(667, 548)
+position = Vector2(659, 562)
 scale = Vector2(4, 4)
 
 [node name="mainframe" parent="." instance=ExtResource("9_fkrx8")]
-position = Vector2(449, 348)
+position = Vector2(451, 339)
 scale = Vector2(4, 4)
 
 [node name="safe_p5" parent="." instance=ExtResource("10_mwgft")]
-position = Vector2(692, 101)
+position = Vector2(704, 97)
 
 [node name="safe_p6" parent="." instance=ExtResource("11_mwgft")]
-position = Vector2(824, 101)
+position = Vector2(832, 97)
 
 [node name="safe_p7" parent="." instance=ExtResource("12_adxub")]
-position = Vector2(958, 101)
+position = Vector2(960, 97)
 
 [node name="terminal" parent="." instance=ExtResource("13_ff0s2")]
-position = Vector2(75, 580)
+position = Vector2(81, 578)
 
 [node name="brain" parent="." instance=ExtResource("13_mwgft")]
-position = Vector2(351, 49)
+position = Vector2(339, 48)
 
 [node name="bgm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_adxub")
@@ -83,3 +76,6 @@ position = Vector2(276, 514)
 interact_label = "Interaction Test"
 interact_type = "print_text"
 interact_value = "Works"
+
+[node name="safe_p2" parent="." instance=ExtResource("17_ondrs")]
+position = Vector2(962, 673)

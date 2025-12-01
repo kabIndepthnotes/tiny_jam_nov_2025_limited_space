@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://djvnsrah0r2br"]
+[gd_scene load_steps=4 format=3 uid="uid://djvnsrah0r2br"]
 
 [ext_resource type="Texture2D" uid="uid://bsju0elntxux4" path="res://assets/drawer.png" id="1_lvudm"]
+[ext_resource type="PackedScene" uid="uid://b77nu0egxwmjq" path="res://scenes/interact_area.tscn" id="2_k0f1d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k0f1d"]
 size = Vector2(24, 24)
@@ -13,3 +14,7 @@ texture = ExtResource("1_lvudm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_k0f1d")
+
+[node name="interact_area" parent="." instance=ExtResource("2_k0f1d")]
+scale = Vector2(2, 2)
+interact_type = "open_drawer"
