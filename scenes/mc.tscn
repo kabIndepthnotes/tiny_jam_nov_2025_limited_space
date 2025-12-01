@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cuxsd4ia7t206"]
+[gd_scene load_steps=7 format=3 uid="uid://cuxsd4ia7t206"]
 
 [ext_resource type="Script" uid="uid://c228s1a4f6v5j" path="res://scripts/mc.gd" id="1_i6vl1"]
 [ext_resource type="Texture2D" uid="uid://mht8yyb20kvj" path="res://assets/mc.png" id="1_yc5nw"]
@@ -6,8 +6,17 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6vl1"]
 size = Vector2(15, 21)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6s5m"]
-size = Vector2(8, 8)
+[sub_resource type="CircleShape2D" id="CircleShape2D_i6vl1"]
+radius = 13.0
+
+[sub_resource type="SystemFont" id="SystemFont_a6s5m"]
+subpixel_positioning = 0
+keep_rounding_remainders = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_vlp1l"]
+font = SubResource("SystemFont_a6s5m")
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
 
 [node name="MC" type="CharacterBody2D"]
 script = ExtResource("1_i6vl1")
@@ -23,15 +32,23 @@ shape = SubResource("RectangleShape2D_i6vl1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="InteractionComponent" type="Node2D" parent="."]
+z_index = 1
 
-[node name="DirectionArrowDown" type="ColorRect" parent="Area2D"]
-offset_left = -4.0
-offset_top = 5.0
-offset_right = 4.0
-offset_bottom = 13.0
-color = Color(1, 0, 0, 1)
+[node name="InteractionArea" type="Area2D" parent="InteractionComponent"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 9)
-shape = SubResource("RectangleShape2D_a6s5m")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionComponent/InteractionArea"]
+shape = SubResource("CircleShape2D_i6vl1")
+
+[node name="InteractLabel" type="Label" parent="InteractionComponent"]
+offset_left = -117.0
+offset_top = -36.0
+offset_right = 119.0
+offset_bottom = -13.0
+text = "Test"
+label_settings = SubResource("LabelSettings_vlp1l")
+horizontal_alignment = 1
+vertical_alignment = 1

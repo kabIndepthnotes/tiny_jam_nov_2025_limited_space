@@ -6,6 +6,7 @@
 --- mc.gd
 extends CharacterBody2D
 @{export_vars}
+@{onready_vars}
 @{vars}
 @{builtin_functions}
 @{custom_functions}
@@ -30,7 +31,7 @@ func _unhandled_input(event):
 	@{_unhandled_input}
 	
 # func _physics_process(delta: float) -> void:
-	# @{_physics_process}
+# 	@{_physics_process}
 ---
 
 credit: https://kidscancode.org/godot_recipes/4.x/2d/grid_movement/index.html
@@ -42,10 +43,10 @@ position.x += tile_size / 2
 
 Second item in array is the area2d stuff.
 --- vars +=
-var inputs = {"move_right": [Vector2.RIGHT, Vector2(player_size.x / 2, player_size.y / 2)],
-            "move_left": [Vector2.LEFT, Vector2(-player_size.x / 2, player_size.y / 2)],
-            "move_up": [Vector2.UP, Vector2(player_size.x / 2, 0)],
-            "move_down": [Vector2.DOWN, Vector2(player_size.x / 2 , player_size.y)],
+var inputs = {"move_right": Vector2.RIGHT,
+            "move_left": Vector2.LEFT,
+            "move_up": Vector2.UP,
+            "move_down": Vector2.DOWN,
 }
 ---
 
@@ -54,7 +55,7 @@ for dir in inputs.keys():
 	if event.is_action_pressed(dir):
 		move(dir)
 ---
-
+ 
 
 Before we actually move the player we want to `clamp` the player to the room and not allow him to move outside it.
 
@@ -72,7 +73,7 @@ We now have to actually move the player
 
 --- f_move
 func move(dir):
-	position += inputs[dir][0] * tile_size
+	position += inputs[dir] * tile_size
 ---
 
 
@@ -86,8 +87,7 @@ var facing_direction = Vector2.DOWN # Track current facing direction
 
 --- f_move :=
 func move(dir):
-	var movement = inputs[dir][0] * tile_size
-	$Area2D.position = inputs[dir][1]
+	var movement = inputs[dir] * tile_size
 	var collision = move_and_collide(movement, true)
 	if collision == null:
 		position += movement
@@ -98,10 +98,69 @@ func move(dir):
 ---
 
 
-
-
 @s debug
 --- _ready +=
 print(position.x)
 ---
+
+@s interaction
+
+--- _ready +=
+var interact_area = $InteractionComponent/InteractionArea
+interact_area.area_entered.connect(_on_interact_area_entered)
+interact_area.area_exited.connect(_on_interact_area_exited)
+---
+
+--- onready_vars
+@onready var all_interactions = []
+---
+
+
+--- custom_functions +=
+func _on_interact_area_entered(area):
+	all_interactions.insert(0,area)
+	print("entered") # debug
+	update_interactions()
+
+func _on_interact_area_exited(area):
+	all_interactions.erase(area)
+	update_interactions()
+---
+
+--- onready_vars +=
+@onready var interactLabel = $InteractionComponent/InteractLabel
+---
+
+
+--- custom_functions +=
+
+func update_interactions():
+	if all_interactions: # if all_interactions is non-empty
+		interactLabel.text = all_interactions[0].interact_label # from interact_area scene
+	else:
+		interactLabel.text = ""
+---
+
+Remove text appearing at the start
+
+--- _ready +=
+update_interactions()
+---
+
+--- custom_functions +=
+func execute_interactions():
+	if all_interactions:
+		var cur_interaction = all_interactions[0]
+		match cur_interaction.interact_type:
+			"print_text": print(cur_interaction.interact_value)
+---
+
+
+Add input
+
+--- _unhandled_input +=
+if event.is_action_pressed("interact"):
+	execute_interactions()
+---
+
 
